@@ -1,6 +1,6 @@
 <?php
 /**
-  *  Ïðîäóêò
+  *  ÐŸÑ€Ð¾Ð´ÑƒÐºÑ‚
   **/
 class Product {
 	protected $id;
@@ -15,17 +15,17 @@ class Product {
 		$this->price = $price;
 	}
 	
-	// Óñòàíàâëèâàåò ñòîèìîñòü òîâàðà
+	// Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€Ð°
 	public function setPrice($price) {
 		$this->price = $price;
 	}
 	
-	// Ñòîèìîñòü òîâàðà
+	// Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€Ð°
 	public function getCost() {
 		return $this->price;
 	}
 	
-	// Äëÿ âûâîäà îáúåêòà ïðè ïå÷àòè
+	// Ð”Ð»Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð¾Ð±ÑŠÐµÐºÑ‚Ð° Ð¿Ñ€Ð¸ Ð¿ÐµÑ‡Ð°Ñ‚Ð¸
 	public function __toString() {
 		return get_called_class() .": ". $this->id ." - '". $this->name ."' - ". $this->getCost() ."$\n";
 	}

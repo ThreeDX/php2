@@ -1,6 +1,6 @@
 <?php
 /**
-  *  Âåñîâîé ïğîäóêò
+  *  Ğ’ĞµÑĞ¾Ğ²Ğ¾Ğ¹ Ğ¿Ñ€Ğ¾Ğ´ÑƒĞºÑ‚
   **/
 class VesProduct extends Product {
 	protected $ves;
@@ -10,12 +10,12 @@ class VesProduct extends Product {
 		$this->ves = $ves;
 	}
 	
-	// Ñòîèìîñòü òîâàğà
+	// Ğ¡Ñ‚Ğ¾Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ°
 	public function getCost() {
 		return $this->price * $this->ves;
 	}
 	
-	// Óñòàíàâëèâàåò âåñ òîâàğà
+	// Ğ£ÑÑ‚Ğ°Ğ½Ğ°Ğ²Ğ»Ğ¸Ğ²Ğ°ĞµÑ‚ Ğ²ĞµÑ Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ°
 	public function setVes($ves) {
 		$this->ves = $ves;
 	}
