@@ -1,12 +1,12 @@
 <?php
-// Àáñòðàêòíûé ïðîäóêò
+// ÐÐ±ÑÑ‚Ñ€Ð°ÐºÑ‚Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚
 abstract class Product {
     public static $price = 500;
 	
     abstract public function getPrice();
 }
 
-// Øòó÷íûé òîâàð
+// Ð¨Ñ‚ÑƒÑ‡Ð½Ñ‹Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€
 class PieceProduct extends Product {
 	use TSingleton;
 
@@ -15,7 +15,7 @@ class PieceProduct extends Product {
     }
 }
 
-// Öèôðîâîé òîâàð
+// Ð¦Ð¸Ñ„Ñ€Ð¾Ð²Ð¾Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€
 class DigitalProduct extends Product {
 	use TSingleton;
 
@@ -24,7 +24,7 @@ class DigitalProduct extends Product {
     }
 }
 
-// Âåñîâîé òîâàð
+// Ð’ÐµÑÐ¾Ð²Ð¾Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€
 class WeightProduct extends Product {
 	use TSingleton;
 
