@@ -8,6 +8,8 @@
 
 namespace simpleengine\models;
 
+use simpleengine\core\DB;
+
 
 class DefaultModel
 {

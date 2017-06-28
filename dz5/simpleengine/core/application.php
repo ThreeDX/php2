@@ -12,8 +12,9 @@ class Application {
     public function run(){
         $this->router = new Router();
 
-        $class = "\\simpleengine\\" . $this->router->getPackage() . "\\" . $this->router->getController();
+        $class = "\\simpleengine\\" . $this->router->getPackage() . "\\" . $this->router->getController() . "Controller";
         $method = "action" . ucfirst($this->router->getAction());
+        //var_dump($class);
 
         if(class_exists($class)){
             $controller = new $class;
@@ -23,11 +24,13 @@ class Application {
                 $controller->$method();
             }
             else{
-                throw new ApplicationException("Method " . $class . " not found", 0503);
+                //throw new ApplicationException("Method " . $class . " not found", 0503);
+                header("Location: /");
             }
         }
         else{
-            throw new ApplicationException("Class " . $class . " not found", 0502);
+            //throw new ApplicationException("Class " . $class . " not found", 0502);
+            header("Location: /");
         }
 
 
@@ -43,7 +46,7 @@ class Application {
     public function get($parameterName){
         $value = NULL;
 
-        if(key_exists($parameterName, $this->configuration))
+        if(array_key_exists($parameterName, $this->configuration))
             $value = $this->configuration[$parameterName];
 
         return $value;

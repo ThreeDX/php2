@@ -23,7 +23,7 @@ abstract class AbstractController
             $template = $this->requestedAction;
 
         $dir = Application::instance()->get("DIR")["VIEWS"];
-        $dir .= mb_strtolower(substr(Application::instance()->router()->getController(), 0, -10), "UTF-8");
+        $dir .= mb_strtolower(Application::instance()->router()->getController(), "UTF-8");
 
         try {
             $loader = new \Twig_Loader_Filesystem($dir);

@@ -4,7 +4,6 @@ require(__DIR__ . "/../vendor/autoload.php");
 require(__DIR__ . "/../simpleengine/core/autoload.php");
 
 // Подключаем конфигурацию
-$configuration = [];
 require(__DIR__ . "/../configuration/main.config.php");
 
 // Стартуем приложение

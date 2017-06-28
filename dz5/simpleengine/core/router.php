@@ -46,19 +46,20 @@ class Router
                 // превращаем правило в регулярное выражение
                 $ruleData = explode("/", $ruleSource);
 
-                $pcre = "/\\/";
+                $pcre = '/\/';
                 foreach($ruleData as $rulePart){
                     if(mb_substr($rulePart, 0, 1, "UTF-8") != '<'){
                         // если это фиксированная часть
-                        $pcre .= $rulePart."\\/";
+                        $pcre .= $rulePart.'\/';
                     }
                     else{
                         // это шаблон
-                        $pcre .= "([a-z0-9-]+\\/)*";
+                        $pcre .= '([a-z0-9-]+\/)*';
                     }
                 }
-                $pcre .= "/";
+                $pcre .= '/';
 
+                //var_dump($pcre);
                 if(preg_match($pcre, $this->urlData["main"])){
                     $activeRule['pattern'] = $ruleSource;
                     $activeRule['controller'] = $ruleTarget;
@@ -92,43 +93,30 @@ class Router
                 if (preg_match("/</", $patternPart)) {
                     $urlPart = isset($urlParts[$partKey]) ? $urlParts[$partKey] : "";
                     $command = str_replace($patternPart, $urlPart, $command);
-                    var_dump($command);
-
-                    if (preg_match("/action/", $patternPart)) {
-                        $this->action = $urlPart;
-                    }
-
-                    if (preg_match("/controller/", $patternPart)) {
-                        $this->controller = $urlPart;
-                    }
-
-                    if (preg_match("/package/", $patternPart)) {
-                        $this->package = $urlPart;
-                    }
                 }
             }
         }
 
         $commandParts = explode("/", $command);
 
-        if($this->action == "" && isset($commandParts[2]) && $commandParts[2] != ""){
+        if(isset($commandParts[2]) && $commandParts[2] != ""){
             $this->action = $commandParts[2];
         }
-        else if($this->action == ""){
+        else {
             $this->action = "index";
         }
 
-        if($this->controller == "" && isset($commandParts[1]) && $commandParts[1] != ""){
+        if(isset($commandParts[1]) && $commandParts[1] != ""){
             $this->controller = $commandParts[1];
         }
-        else if($this->controller == ""){
-            $this->controller = "DefaultController";
+        else {
+            $this->controller = "Default";
         }
 
-        if($this->package == "" && isset($commandParts[0]) && $commandParts[0] != ""){
+        if(isset($commandParts[0]) && $commandParts[0] != ""){
             $this->package = $commandParts[0];
         }
-        else if($this->package == ""){
+        else {
             $this->package = "controllers";
         }
     }

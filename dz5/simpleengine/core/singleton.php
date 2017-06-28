@@ -11,7 +11,7 @@ namespace simpleengine\core;
 trait Singleton {
     static private $instance = null;
 
-    private function __construct() { }  // Защищаем от создания через new Singleton
+    private function __construct() { $this->init(); }  // Защищаем от создания через new Singleton
     private function __clone() { }  // Защищаем от создания через клонирование
     private function __wakeup() { }  // Защищаем от создания через unserialize
 
@@ -21,4 +21,6 @@ trait Singleton {
                 ? self::$instance = new static()//new self()
                 : self::$instance;
     }
+
+    protected function init() {}
 }

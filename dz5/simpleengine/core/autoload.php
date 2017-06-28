@@ -18,6 +18,6 @@ function simpleEngineAutoloader($class){
         require_once($path);
     }
     else{
-        throw new Exception("Class " . $class . " wasn't found in ".$path, 0404);
+        //throw new Exception("Class " . $class . " wasn't found in ".$path, 0404);
     }
 }
