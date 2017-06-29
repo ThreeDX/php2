@@ -8,9 +8,9 @@
 
 namespace simpleengine\controllers;
 
-
 use simpleengine\core\Application;
 use simpleengine\core\exception\ApplicationException;
+use simpleengine\models\user;
 
 abstract class AbstractController
 {
@@ -39,4 +39,17 @@ abstract class AbstractController
     public function setRequestedAction($actionName){
         $this->requestedAction = $actionName;
     }
+
+    // Для тех контроллеров, кому нужен авторизованный пользователь
+    protected function getUserAndRedirect(){
+        $user = (new User())->getCurrent();
+
+        if (!$user) {
+            Application::instance()->redirect('auth');
+            return null;
+        }
+
+        return $user;
+    }
+
 }

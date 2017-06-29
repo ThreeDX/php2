@@ -3,15 +3,21 @@
 <head lang="ru">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>{{ title }}</title>
-    <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
     <h1>Это наш новый сайт</h1>
     <p>{{ hello }}</p>
+    <p>User: {% if user is null %}None{% else %}{{ user.getId }} - {{ user.getLogin }}{% endif %}</p>
 
     <h2>{{ info }}</h2>
+    {% if user is null %}
+    <p><a href="/auth">Login page</a></p>
+    {% else %}
+    <p><a href="/account">Account page</a></p>
+    {% endif %}
+
 </body>
 </html>

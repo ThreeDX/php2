@@ -21,16 +21,17 @@ class Application {
             $controller->setRequestedAction($this->router->getAction());
 
             if(method_exists($controller, $method)){
+                session_start();
                 $controller->$method();
             }
             else{
                 //throw new ApplicationException("Method " . $class . " not found", 0503);
-                header("Location: /");
+                $this->redirect();
             }
         }
         else{
             //throw new ApplicationException("Class " . $class . " not found", 0502);
-            header("Location: /");
+            $this->redirect();
         }
 
 
@@ -54,5 +55,9 @@ class Application {
 
     public function router(){
         return $this->router;
+    }
+
+    public function redirect($url = ''){
+        header("Location: /{$url}");
     }
 }

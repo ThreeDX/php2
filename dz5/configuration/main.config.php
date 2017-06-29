@@ -1,6 +1,9 @@
 <?php
 $configuration = [];
 
+// Временная зона по умолчанию
+date_default_timezone_set("Europe/Moscow");
+
 // Настройки окружения
 $configuration["ENVIRONMENT"] = "PROD";
 

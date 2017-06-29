@@ -8,8 +8,8 @@
 
 namespace simpleengine\controllers;
 
-
 use simpleengine\models\DefaultModel;
+use simpleengine\models\user;
 
 class DefaultController extends AbstractController
 {
@@ -18,8 +18,10 @@ class DefaultController extends AbstractController
         $model = new DefaultModel();
 
         echo $this->render("index", [
+            "title" => "Main page",
             "hello" => "geekbrains",
-            "info" => $model->testMethod()
+            "info" => $model->testMethod(),
+            "user" => (new User())->getCurrent()
         ]);
     }
 }
